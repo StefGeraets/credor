@@ -18,7 +18,7 @@ const Header: FC<{ player: Player }> = ({ player }) => {
       />
       <Attribute side="right" attribute={player.race} title="Race" />
 
-      <Attribute side="left" attribute="&nbsp;" title="Subclass" />
+      <Attribute side="left" attribute={player.subclass} title="Subclass" />
       <Attribute
         side="right"
         attribute={player.background}

@@ -43,4 +43,5 @@ export interface Player {
   background: string;
   xp: number;
   alignment: Alignment;
+  subclass?: string;
 }

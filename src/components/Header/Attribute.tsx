@@ -7,7 +7,9 @@ const Attribute: FC<{
 }> = ({ side, title, attribute }) => {
   return (
     <div className={side === "left" ? "text-right" : ""}>
-      <p className="w-full rounded shadow-md bg-stone-100 p-1">{attribute}</p>
+      <p className="w-full rounded shadow-md bg-stone-100 p-1">
+        {attribute ? attribute : <span>&nbsp;</span>}
+      </p>
       <small className="italic">{title}</small>
     </div>
   );

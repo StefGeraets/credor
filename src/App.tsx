@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
+import Content from "./components/Content";
 import "./App.css";
 import { Player } from "./global";
 
@@ -13,12 +14,14 @@ function App() {
     background: "Hermit",
     xp: 64000,
     alignment: "lawful-good",
+    subclass: "open-hand",
   };
 
   return (
     <div className="App">
       <div className="container mx-auto  min-h-full">
         <Header player={player} />
+        <Content player={player} />
       </div>
     </div>
   );
