@@ -1,8 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
 import { Player } from "../../global";
+import Proficiencies from "./Proficiencies";
+import SavingThrows from "./SavingThrows";
 
 const Content: FC<{ player: Player }> = ({ player }) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState(null);
 
@@ -36,7 +38,12 @@ const Content: FC<{ player: Player }> = ({ player }) => {
       {error && (
         <div>{`There is a problem fetching the post data = ${error}`}</div>
       )}
-      {data && <p>{JSON.stringify(data)}</p>}
+      {data && (
+        <div>
+          <Proficiencies prof={data.proficiencies} />
+          <SavingThrows savingThrows={data.saving_throws} />
+        </div>
+      )}
     </div>
   );
 };

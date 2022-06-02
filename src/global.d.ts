@@ -34,6 +34,14 @@ export type Alignment =
   | "neutral-evil"
   | "neutral-good";
 
+export type Stats = {
+  STR: number;
+  DEX: number;
+  CON: number;
+  INT: number;
+  WIS: number;
+  CHA: number;
+};
 export interface Player {
   name: string;
   charName: string;
@@ -43,5 +51,6 @@ export interface Player {
   background: string;
   xp: number;
   alignment: Alignment;
-  subclass?: string;
+  subclass: string;
+  statsRolled: Stats;
 }
