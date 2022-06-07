@@ -1,6 +1,5 @@
 import React from "react";
 
-import Content from "./components/Content";
 import Header from "./components/Header";
 import MainStats from "./components/MainStats";
 
@@ -32,7 +31,6 @@ function App() {
       <div className="container mx-auto  min-h-full">
         <Header player={player} />
         <MainStats player={player} />
-        <Content player={player} />
       </div>
     </div>
   );
