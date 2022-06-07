@@ -1,20 +1,24 @@
-import {
-  getByClass,
-  getByClassLevel,
-  getProficiencyBonus,
-} from "../../utils/helpers";
-
-jest.mock("getByClass").fn(() => {
-  "henk";
-});
+import { API, getByClass } from "../../utils/helpers";
 
 describe("getByClass", () => {
-  it("Should return class details with provided player class", () => {
-    const result = getByClass("Bard");
+  it("Should return class details with provided player class", async () => {
+    const spyDoRequest = jest
+      .spyOn(API, "doRequest")
+      .mockResolvedValueOnce("henk");
+    const result = await getByClass("Bard");
 
+    expect(API.doRequest).toHaveBeenCalled();
     expect(result).toBe("henk");
   });
-  it.todo("Should throw error if API is not available");
+
+  it("Should throw error if API is not available", async () => {
+    const spyDoRequest = jest
+      .spyOn(API, "doRequest")
+      .mockRejectedValueOnce("Failed");
+
+    // eslint-disable-next-line jest/no-conditional-expect
+    await getByClass("Barbarian").catch((err) => expect(err).toBe("Failed"));
+  });
 });
 
 describe("getByClassLevel", () => {

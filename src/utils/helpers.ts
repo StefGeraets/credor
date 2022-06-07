@@ -1,25 +1,31 @@
 import { Class } from "../global";
 import { API_URL } from "./constants";
 
-const doRequest = async (url: string) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`This is an HTTP error: The status is ${response.status}`);
-  }
-  const data = response.json();
+export const API = {
+  doRequest: async (url: string) => {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(
+        `This is an HTTP error: The status is ${response.status}`
+      );
+    }
+    const data = response.json();
 
-  return data;
+    return data;
+  },
 };
 
 export const getByClass = async (playerClass: Class) => {
-  return doRequest(`${API_URL}/classes/${playerClass.toLocaleLowerCase()}`);
+  return await API.doRequest(
+    `${API_URL}/classes/${playerClass.toLocaleLowerCase()}`
+  );
 };
 
 export const getByClassLevel = async (
   playerClass: Class,
   level: number
 ): Promise<any> => {
-  return doRequest(
+  return API.doRequest(
     `${API_URL}/classes/${playerClass.toLowerCase()}/levels/${level}`
   );
 };
